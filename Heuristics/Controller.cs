@@ -14,6 +14,7 @@ namespace Heuristics {
         GAPexact GAPexe;
         private GAPServer server;
         int maxIter = 20000;
+        private Boolean started = false;
 
         public Controller() {
             this.GAP = new GeneralizedAssignment();
@@ -93,15 +94,19 @@ namespace Heuristics {
         }
 
         public void startWSserver(System.Windows.Forms.TextBox txtSocket) {
-            TraceListener socketListener = new MyTraceListener(txtSocket);
-            server = new GAPServer(socketListener, dbPath, 8100);
-            server.cliMagString = Per.getCliMag(dbPath);
-            server.soluzione = Per.getSolution(dbPath);
-            server.startServer();
+            if (!started) {
+                TraceListener socketListener = new MyTraceListener(txtSocket);
+                server = new GAPServer(socketListener, dbPath, 8100);
+                server.cliMagString = Per.getCliMag(dbPath);
+                server.soluzione = Per.getSolution(dbPath);
+                server.startServer();
+                started = true;
+            }
         }
 
         public void stopWSserver() {
             server.stopServer();
+            started = false;
         }
     }
 }

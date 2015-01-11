@@ -180,7 +180,6 @@ namespace Heuristics {
             }
             return true;
         }
-
         public bool salvaSoluzione(string dbPath, string algo) {
             if (usingFile)
                 return salvaTxt(dbPath, algo);
