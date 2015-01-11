@@ -36,3 +36,6 @@ C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.csproj.Gener
 C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.exe
 C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.pdb
 C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.csprojResolveAssemblyReference.cache
+C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\Heuristics.exe.config
+C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.exe
+C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.pdb

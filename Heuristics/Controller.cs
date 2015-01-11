@@ -72,7 +72,7 @@ namespace Heuristics {
             GAP.variableNeighborhoodSearch(10000);
             Trace.WriteLine("Variable Neigh Search terminata, costo: " + GAP.zub);
             if (GAP.zub < zubold) {
-                Per.salvaSoluzione(dbPath, "Variable Neighborhoode Search");
+                Per.salvaSoluzione(dbPath, "Variable Neighborhood Search");
             }
         }
 
