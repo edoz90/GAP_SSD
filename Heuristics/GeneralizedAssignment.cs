@@ -313,7 +313,6 @@ namespace Heuristics {
             for (int iter = 0; iter < maxIter; iter++) {
                 opt10();
                 dataPerturbation();
-                //iter++;
             }
             return zub;
         }
