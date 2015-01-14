@@ -119,7 +119,7 @@ namespace Heuristics
             this.btnVND.Name = "btnVND";
             this.btnVND.Size = new System.Drawing.Size(149, 42);
             this.btnVND.TabIndex = 3;
-            this.btnVND.Text = "Variable Neighborhood Descend";
+            this.btnVND.Text = "Variable Neighborhood Descent";
             this.btnVND.UseVisualStyleBackColor = true;
             this.btnVND.Click += new System.EventHandler(this.btnVnd_Click);
             // 

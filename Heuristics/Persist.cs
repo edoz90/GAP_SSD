@@ -102,7 +102,6 @@ namespace Heuristics {
                 return false;
             }
         }
-
         // recupero solo la prima istanza dei dati
         public bool openFile(string dbPath) {
             StreamReader sr = null;

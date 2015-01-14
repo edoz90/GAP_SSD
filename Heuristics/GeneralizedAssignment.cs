@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Heuristics {
-    class GeneralizedAssignment {
+    internal class GeneralizedAssignment {
         public int n; // numero dei clienti
         public int m; // numero dei magazzini
         public double[,] c; // matrice dei costi
@@ -15,10 +15,10 @@ namespace Heuristics {
 
         public int[] sol, solbest; // di dimensione n
 
-        const double EPS = 0.00001;
+        private const double EPS = 0.00001;
         public double zub; // costo della miglior soluzione trovata
 
-        System.Random rnd = new Random(550);
+        private System.Random rnd = new Random(550);
 
         /* Prende i posibili assegnamenti cliente magazzino, li ordina per costo crescente, parto dal cliente che è più vicino 
          * al magazzino fino ad arrivare a quello più indecente, e comincio a dire "questo lo faccio, quest'altro lo assegno, etc" 
@@ -43,7 +43,7 @@ namespace Heuristics {
                     //dist[i] = c[i, j]; // guardo quanto costa l'assegnamento del cliente corrente al magazzino
                     // altrimenti non genera una soluzione valida
                     dist[i] = req[i, j];
-                    ind[i] = i; //mi servirà per ordinare, dico che al posto 0 l'inidice è 0, al posto 1 sta 1 ecc ecc 
+                    ind[i] = i; // mi servirà per ordinare, dico che al posto 0 l'inidice è 0, al posto 1 sta 1 ecc ecc 
                 }
                 // ordina ind secondo le chiavi dist
                 Array.Sort(dist, ind);
@@ -74,20 +74,22 @@ namespace Heuristics {
             return opt10(c);
         }
 
+        // Ad ogni cliente scambio un magazzino e se il nuovo assegnamento ha un costo minore lo aggiungo alle soluzioni
         public double opt10(double[,] matcosti) {
             double z = 0, zcheck = 0;
             int i, isol, j;
             int[] capres = new int[cap.Length]; // array delle capacità residue
-            // Ad ogni cliente scambio un magazzino e se il nuovo assegnamento ha un costo minore lo aggiungo alle soluzioni
 
             Array.Copy(cap, capres, cap.Length); // inizializzo array delle capcaità residue
             for (j = 0; j < n; j++) {
-                capres[sol[j]] -= req[sol[j], j]; // la capacità residua del magazzino che contiene il cliente j viene decrementata dalla richiesta del cliente j
+                capres[sol[j]] -= req[sol[j], j];
+                // la capacità residua del magazzino che contiene il cliente j viene decrementata dalla richiesta del cliente j
                 z += matcosti[sol[j], j];
             }
 
-            // per ogni clienti prendo il magazzino a cui è associato e lo cambio con tutti gli altri
-        l0: for (j = 0; j < n; j++) {
+            // per ogni cliente prendo il magazzino a cui è associato e lo cambio con tutti gli altri
+        l0:
+            for (j = 0; j < n; j++) {
                 isol = sol[j];
                 for (i = 0; i < m; i++) {
                     // se è lo stesso magazzino
@@ -103,9 +105,8 @@ namespace Heuristics {
                         // se la soluzione migliore attuale è migliore della "migliore di sempre" me la salvo
                         if (z < zub && (Math.Abs(z - zcheck) <= EPS)) {
                             zub = z;
-                            //solbest[j] = sol[j];
                             //Trace.WriteLine("[1-0 opt] new zub " + zub);
-                            Array.Copy(sol, solbest, sol.Length); // inizializzo array delle capcaità residue
+                            Array.Copy(sol, solbest, sol.Length);
                         }
                         goto l0;
                     }
@@ -133,7 +134,8 @@ namespace Heuristics {
             zcheck = checkSolution(sol);
 
             // scambio 2 clienti
-        l0: for (j1 = 0; j1 < n; j1++) {
+        l0:
+            for (j1 = 0; j1 < n; j1++) {
                 for (j2 = j1 + 1; j2 < n; j2++) {
                     delta = (c[sol[j1], j1] + c[sol[j2], j2]) - (c[sol[j1], j2] + c[sol[j2], j1]);
                     if (delta > 0) {
@@ -188,7 +190,8 @@ namespace Heuristics {
             Trace.WriteLine(Environment.NewLine + "Starting simulated annealing");
             T = maxT;
             iter = 0;
-        lab2: iter++;
+        lab2:
+            iter++;
             j = rnd.Next(0, n - 1);
             isol = sol[j];
             i = rnd.Next(0, m - 1);
@@ -204,7 +207,7 @@ namespace Heuristics {
                 if (z < zub && (Math.Abs(z - checkSolution(sol)) <= EPS)) {
                     zub = z;
                     Trace.WriteLine("[SA] new zub " + zub);
-                    Array.Copy(sol, solbest, sol.Length); // inizializzo array delle capcaità residue
+                    Array.Copy(sol, solbest, sol.Length);
                 }
             } else if (capres[i] >= req[i, j]) {
                 p = Math.Exp(-(c[i, j] - c[isol, j]) / (k * T));
@@ -259,7 +262,8 @@ namespace Heuristics {
             }
             Trace.WriteLine(Environment.NewLine + "Starting Tabu Search");
 
-        l0: deltaMAx = double.MinValue;
+        l0:
+            deltaMAx = double.MinValue;
             jmax = 0;
             imax = sol[jmax];
             iter++;
@@ -289,7 +293,7 @@ namespace Heuristics {
             z -= deltaMAx;
 
             if (z < zub) {
-            //if (z < zub && (Math.Abs(z - checkSolution(sol)) <= EPS)) {
+                //if (z < zub && (Math.Abs(z - checkSolution(sol)) <= EPS)) {
                 zub = z;
                 Array.Copy(sol, solbest, sol.Length);
                 Trace.WriteLine("[TS] New zub = " + zub);
@@ -336,18 +340,21 @@ namespace Heuristics {
             iter = 0;
             Trace.WriteLine(Environment.NewLine + "Starting Variable Neighborhood Search");
             while (iter < maxIter) {
-            loop: z1 = opt10();
+            loop:
+                z1 = opt10();
                 z2 = opt11();
                 if (z2 < z1) {
                     iter = 0;
                     goto loop;
-                } else { neigh21(); }
+                } else {
+                    neigh21();
+                }
                 iter++;
             }
             return zub;
         }
 
-        // scambio due (stesso deposito) vs 1 (altro deposito)
+        // scambio due clienti stesso deposito con 1 altro deposito
         private void neigh21() {
             int i1 = 0, i2 = 0, j = 0, j11 = 0, j12 = 0, j21 = 0, iter = 0;
             List<int> lst1 = new List<int>(), lst2 = new List<int>();
@@ -370,9 +377,10 @@ namespace Heuristics {
                     lst2.Add(j);
             }
 
-            // scelgo 2 a caso in i1 e uno a caso in i2
+            // scelgo 2 magazzini a caso in i1 e uno a caso in i2
             iter = 0;
-        loop: j11 = rnd.Next(lst1.Count);
+        loop:
+            j11 = rnd.Next(lst1.Count);
             j12 = rnd.Next(lst1.Count);
             if (j12 == j11)
                 j12 = (j12 + 1) % lst1.Count;
@@ -427,7 +435,8 @@ namespace Heuristics {
                     goto lend;
                 }
             }
-        lend: return cost;
+        lend:
+            return cost;
         }
     }
 }

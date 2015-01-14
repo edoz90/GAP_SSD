@@ -33,7 +33,7 @@ namespace Heuristics {
             Trace.WriteLine("opt10 terminata, costo " + GAP.zub);
             GAP.opt11();
             Trace.WriteLine("opt11 terminata, costo " + GAP.zub);
-            Per.salvaSoluzione(dbPath, "Variable Neighborhood Descend");
+            Per.salvaSoluzione(dbPath, "Variable Neighborhood Descent");
         }
 
         public void tabuSearch() {

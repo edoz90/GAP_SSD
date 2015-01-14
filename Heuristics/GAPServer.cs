@@ -31,7 +31,6 @@ namespace Heuristics {
                 OnDisconnect = OnDisconnect,
                 TimeOut = new TimeSpan(0, 5, 0)
             };
-
             server.Start();
             trace.WriteLine("Starting Web Socket Server.");
         }

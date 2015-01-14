@@ -37,8 +37,6 @@ C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.exe
 C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.pdb
 C:\Users\Edoardo\Desktop\FinalSSD\Heuristics\obj\Release\Heuristics.csprojResolveAssemblyReference.cache
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\Heuristics.exe.config
-C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.exe
-C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.pdb
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\Heuristics.exe
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\Heuristics.pdb
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\Alchemy.dll
@@ -51,7 +49,8 @@ C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\WrapperCS.dll
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\EntityFramework.xml
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\EntityFramework.SqlServer.xml
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\bin\System.Data.SQLite.xml
-C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.csprojResolveAssemblyReference.cache
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.frmHeu.resources
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.Properties.Resources.resources
 C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.csproj.GenerateResource.Cache
+C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.exe
+C:\Users\Edoardo\Desktop\GAP_SSD\Heuristics\obj\Release\Heuristics.pdb
